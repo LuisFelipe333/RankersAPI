@@ -1,8 +1,8 @@
-﻿namespace RankersAPI.Models
+﻿namespace RankersAPI.Models.Enums
 {
     public enum Positions
     {
-        Unknown = 0,    
+        Unknown = 0,
         Fisherman = 1,
         SpearBearer = 2,
         Scout = 3,

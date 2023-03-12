@@ -1,4 +1,6 @@
-﻿namespace RankersAPI.Models
+﻿using RankersAPI.Models.Enums;
+
+namespace RankersAPI.Models
 {
     public class Ranker
     {
