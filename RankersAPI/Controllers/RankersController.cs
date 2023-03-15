@@ -10,6 +10,11 @@ namespace RankersAPI.Controllers
     {
         private readonly DataContext context;
 
+        public RankersController(DataContext context)
+        {
+            this.context = context;
+        }
+
         [HttpGet]
         public async Task<ActionResult<List<Ranker>>> GetListRankers()
         {
@@ -34,10 +39,29 @@ namespace RankersAPI.Controllers
             return Ok(await context.Rankers.ToListAsync());
         }
 
-        public RankersController(DataContext context)
+        [HttpPut]
+        public async Task<ActionResult<List<Ranker>>> UpdateRanker(Ranker ranker)
         {
-            this.context = context;
+            Ranker dbRanker = await context.Rankers.FindAsync(ranker.Id);
+            if (dbRanker == null)
+                return BadRequest("Ranker not found");
+
+            dbRanker.rank = ranker.rank;
+            dbRanker.status = ranker.status;
+            dbRanker.name = ranker.name;
+            dbRanker.sobriquet = ranker.sobriquet;
+            dbRanker.positions = ranker.positions;
+            dbRanker.secondaryPosition = ranker.secondaryPosition;
+            dbRanker.description = ranker.description;
+
+
+            await context.SaveChangesAsync();
+
+
+            return Ok(await context.Rankers.ToListAsync());
         }
+
+        
 
     }
 }
