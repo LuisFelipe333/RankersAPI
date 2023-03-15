@@ -13,8 +13,7 @@ namespace RankersAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Ranker>>> GetRankers()
         {
-            var rankers = new List<Ranker>();
-            return Ok(rankers);
+            return Ok(await context.Rankers.ToArrayAsync());
         }
 
         public RankersController(DataContext context)
