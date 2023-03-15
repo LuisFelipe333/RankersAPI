@@ -61,7 +61,19 @@ namespace RankersAPI.Controllers
             return Ok(await context.Rankers.ToListAsync());
         }
 
-        
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Ranker>> DeleteRankerById(int id)
+        {
+            var ranker = await context.Rankers.FindAsync(id);
+            if (ranker == null)
+                return BadRequest("Ranker not found");
+
+            context.Rankers.Remove(ranker);
+            await context.SaveChangesAsync();
+            return Ok(await context.Rankers.ToListAsync());
+        }
+
+
 
     }
 }
