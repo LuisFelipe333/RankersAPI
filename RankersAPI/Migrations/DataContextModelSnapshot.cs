@@ -40,15 +40,17 @@ namespace RankersAPI.Migrations
                     b.Property<int>("positions")
                         .HasColumnType("int");
 
-                    b.Property<int>("rank")
-                        .HasColumnType("int");
+                    b.Property<string>("rank")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("secondaryPosition")
+                    b.Property<int?>("secondaryPosition")
                         .HasColumnType("int");
 
                     b.Property<string>("sobriquet")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("status")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

@@ -16,11 +16,12 @@ namespace RankersAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    rank = table.Column<int>(type: "int", nullable: false),
+                    rank = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    status = table.Column<int>(type: "int", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    sobriquet = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    sobriquet = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     positions = table.Column<int>(type: "int", nullable: false),
-                    secondaryPosition = table.Column<int>(type: "int", nullable: false),
+                    secondaryPosition = table.Column<int>(type: "int", nullable: true),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

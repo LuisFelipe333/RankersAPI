@@ -11,7 +11,7 @@ using RankersAPI.Data;
 namespace RankersAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230314055608_CreateInitial")]
+    [Migration("20230315032636_CreateInitial")]
     partial class CreateInitial
     {
         /// <inheritdoc />
@@ -43,15 +43,17 @@ namespace RankersAPI.Migrations
                     b.Property<int>("positions")
                         .HasColumnType("int");
 
-                    b.Property<int>("rank")
-                        .HasColumnType("int");
+                    b.Property<string>("rank")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("secondaryPosition")
+                    b.Property<int?>("secondaryPosition")
                         .HasColumnType("int");
 
                     b.Property<string>("sobriquet")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("status")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
